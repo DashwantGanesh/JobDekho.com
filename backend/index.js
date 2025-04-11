@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended:true}));  //make the data available on r
 app.use(cookieParser());  // used to parse cookies attached to the incoming requests.
 
 const corsOptions={   //allows you to control which domains can access resources on your server.
-    origin:"http://localhost:5173", //domain of vite+react
+    origin:"https://jobdekho-com.onrender.com", //domain of vite+react
     credentials:true
 }
  app.use(cors(corsOptions));
