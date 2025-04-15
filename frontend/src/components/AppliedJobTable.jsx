@@ -19,12 +19,12 @@ const AppliedJobTable = () => {
             </TableHeader>
             <TableBody>
                 {
-                   allAppliedJobs.length === 0 ? <span>You haven't applied for any job.</span> :  allAppliedJobs.map((appliedJob)=>(
+                   allAppliedJobs.length === 0 ? <span>You haven't applied for any job.</span> :  allAppliedJobs.filter((appliedJob) => appliedJob?.job).map((appliedJob)=>(
                         <TableRow key={appliedJob._id}>
                             <TableCell>{appliedJob?.createdAt.split("T")[0]}</TableCell>
-                            <TableCell>{appliedJob.job.title}</TableCell>
-                            <TableCell>{appliedJob.job.company.name}</TableCell>
-                            <TableCell className='text-right'><Badge className={`${appliedJob?.status === "rejected" ? "bg-red-400" : appliedJob?.status === "pending" ? "bg-gray-500" : "bg-green-600" }`}>{appliedJob.status.toUpperCase()}</Badge></TableCell>
+                            <TableCell>{appliedJob.job.title || "Untitled"}</TableCell>
+                            <TableCell>{appliedJob.job.company.name || "Unknown"}</TableCell>
+                            <TableCell className='text-right'><Badge className={`${appliedJob?.status === "rejected" ? "bg-red-400" : appliedJob?.status === "pending" ? "bg-gray-500" : "bg-green-600" }`}>{appliedJob.status.toUpperCase() || "UNKNOWN"}</Badge></TableCell>
                         </TableRow>
                     ))
                 }
